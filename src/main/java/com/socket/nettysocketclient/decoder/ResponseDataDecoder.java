@@ -13,8 +13,8 @@ public class ResponseDataDecoder extends ReplayingDecoder<ResponseData> {
     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
         ResponseData responseData = new ResponseData();
         responseData.setResponse(in.readInt());
-//        int stringIndex = in.readInt();
-//        responseData.setText(in.readCharSequence(stringIndex, StandardCharsets.UTF_8).toString());
+        int stringIndex = in.readInt();
+        responseData.setText(in.readCharSequence(stringIndex, StandardCharsets.UTF_8).toString());
         out.add(responseData);
     }
 }
